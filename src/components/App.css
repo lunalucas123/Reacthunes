@@ -1,0 +1,82 @@
+.app{
+  display: flex;
+  background-image: url("/src/music.jpeg");
+  position: fixed;
+  background-size: cover;
+  background-position: center;
+  min-width: 110%;
+  min-height: 110%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  align-items: center;
+  
+  
+
+}
+
+.singers{
+ 
+  width : 350px;
+  height: 300px;
+  padding-left: 17%;
+  
+
+}
+
+.one{
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  padding-left: 7%;
+  
+  
+  
+}
+
+.two {
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  padding-left: 7%;
+  
+}
+
+.three {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 5;
+  grid-row-end: 5;
+ 
+}
+
+
+.four {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 10;
+  grid-row-end: 1;
+ 
+}
+
+.five {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 8;
+  grid-row-end: 2;
+  
+ 
+}
+
+.six {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 16;
+  grid-row-end: 2;
+  
+ 
+}
+
+
