@@ -10,18 +10,18 @@ function Results(props) {
         return (
 
    <div >
-            {props.fetchedData.length > 0 && 
+            {/* {props.fetchedData.length > 0 && 
 
                         <div style={{color :'green', fontSize:25, paddingLeft:100 }}>
                                       
                                       <h1>{props.searchedData[0].toUpperCase() + props.searchedData.slice(1,)}'s songs </h1>      
                         </div> 
                     
-              }
+              } */}
 
           {props.fetchedData.length > 0 && 
               
-          <table style={{width:500}}>
+          <table style={{width:700, height:100, paddingTop: "200px", paddingLeft: "30px"}}>
                         
                           <thead >  
                             <tr >
@@ -46,7 +46,7 @@ function Results(props) {
                                         
                                   
                                                 <td  style={{
-                                                  border: "1px solid rgb(0, 0, 0)", fontSize:23
+                                                  border: "1px solid rgb(0, 0, 0)", fontSize:33
                                                 }}>{s.trackName}</td>
                                                         
 

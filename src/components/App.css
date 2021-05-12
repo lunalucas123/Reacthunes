@@ -17,9 +17,11 @@
 
 .singers{
  
-  width : 350px;
-  height: 300px;
-  padding-left: 17%;
+  width : 550px;
+  height: 500px;
+  padding-left: 1%;
+  padding-top: 90px;
+
   
 
 }
@@ -79,4 +81,46 @@
  
 }
 
+.weather{
+  width: 500;
+  padding-left: 80px;
+  padding-top: 100px;
+  padding-right: 50px;
+}
 
+
+
+
+.social-container {
+  background: #eee;
+  padding: 21px 41px;
+  margin-top: 10px;
+  margin-right:380px;
+}
+
+a.social {
+  margin: 0 1rem;
+  transition: transform 250ms;
+  display: inline-block;
+}
+
+a.social:hover {
+  transform: translateY(-2px);
+}
+
+a.youtube {
+  color: #eb3223;
+}
+
+a.facebook {
+  color: #4968ad;
+}
+
+a.twitter {
+  color: #49a1eb;
+}
+
+a.instagram {
+  color: black;
+}
+ 

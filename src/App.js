@@ -1,112 +1,74 @@
-import axios from 'axios';
 import React, {useState, useEffect} from 'react'
-import Welcome from './components/Welcome'
-import Results from './components/Results.jsx'
-import Api from './components/TicketMasterApi'
-import Calendario from './components/Calendar'
+import axios from 'axios';
+import HomePage from './pages/HomePage/HomePage';
+import {Route, BrowserRouter as Router, Switch, Link} from 'react-router-dom'
+import FirstToolBar from './pages/HomePage/login/FirstToolBar';
+import LoginPage from './pages/HomePage/login/LogInPage';
+import News from './pages/HomePage/News';
+import Support from './pages/HomePage/Support';
+import Trending from './pages/HomePage/Trending'
+import ApiDisplay from './pages/HomePage/ApiDisplay/ApiDisplay';
+import Logout from './pages/HomePage/login/Logout'
+import SecToolBar from './pages/HomePage/ApiDisplay/SecToolBar';
 
-
-import './components/App.css'
 
 
 function App() {
-  const [searchedData, setSearchedData] = useState('')
-  const [fetchedData, setFetchedData] = useState([])
-  const [dataEvent, setDataEvent] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  // console.log(searchedData)
-  // console.log(searchedData)
+  const [newsData, setNewsData] = useState([])
+  console.log(newsData)
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=adb3b5cf94e64fc4938479a2e8697daa',
+      );
+ 
+      setNewsData(result.data.articles);
+    };
+ 
+    fetchData();
+  }, []);
 
-  const handleSubmit = e => {
-      e.preventDefault()
-      setLoading(true)
-      axios.get(`https://itunes.apple.com/search?term=${searchedData}&limit=5`)
-            .then(res=>{
-                setFetchedData(res.data.results)
-                console.log(fetchedData)
-                // console.log(searchedData)
-               
-                setSubmitted(true)
-                // console.log(fetchedData)
-            })
-
-
-      axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchedData}&source=ticketmaster&size=10&countryCode=US&apikey=EAJQULrpebKfWjonhZ05WspYMwVyvGnp`)
-    
-                .then(res=>
-                  
-                  {setDataEvent(res.data._embedded.events)
-                  
-                  // console.log(searchedData)
-                  console.log(dataEvent)
-                  setSubmitted(true)
-                  // console.log(dataEvent)
-                  
-              
-              })
-            
-            .catch(err=>{
-                console.log(err);
-            })
-    
-  } 
 
 
   return (
- <div>
-              <div className='app'>
 
-                      <div className= "one">
-                          <Welcome />
-                      </div>  
-                     
+    <div>
+      
+        <Router>
+              <nav>
+                 
+                  <LoginPage/>
+                  
+            
+              </nav>
 
-                      <div className='two' >
-                            <form  onSubmit={handleSubmit}  onClick={fetch}>
-                              <div >
-                                    <input style={{color :'green', fontSize:25}} 
-                                    type= 'text'  placeholder= 'artist...' value = {searchedData} onChange={(e) => setSearchedData(e.target.value)} />
-                                    <input  style={{
-                                                      color :'green', fontSize:25, 
-                                                    }}
-                                    type= 'submit' value= "SEARCH" />
-                              </div>
-                            </form>
-                      </div>     
+              <Switch>
+                <Route path="/News">
+                  <News newsData = {newsData} />
+                </Route>
+                <Route path="/Support">
+                  <Support />
+                </Route>
+                <Route path="/Trending">
+                  <Trending />
+                </Route>
+                <Route path="/Login">
+                  <LoginPage />
+                </Route>
+                <Route path="/ApiDisplay">
+                  <ApiDisplay />
+                </Route>
+                <Route path="/Logout">
+                  <Logout />
+                </Route>
+              </Switch>
 
-                      <div className='three' >
-                          <Results searchedData = {searchedData} fetchedData = {fetchedData} submit={submitted}/> 
-                      </div> 
+        </Router>
 
-
-                      <div className='four'>
-                              <div style={{width:410, height:300, paddingLeft:30, paddingRight:130}} id="wwo-weather-widget-2"></div>  
-                      </div>
-
-
-                      
-
-                      <div className='five'>  
-                         <div > <Calendario /> </div>                  
-                       
-                      </div>  
-                      
-                      <div className='six'> 
-                      
-                        <Api submit={submitted} searchedData={searchedData} dataEvent={dataEvent} />
-
-
-                      </div>  
-              </div>
-              
-
-
-</div>
-
-
-  )
- }
+    </div>
+)
+}
 export default App;
 
 

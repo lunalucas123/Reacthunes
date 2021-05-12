@@ -8,6 +8,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import SocialFollow from './SocialFollow';
+
 
 
 const columns = [
@@ -28,7 +30,7 @@ const useStyles = makeStyles({
 
 function Api(props) {
   const [nestedData, setNestedData] = useState([props.dataEvent])
-  console.log(nestedData)
+  // console.log(nestedData)
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const classes = useStyles();
@@ -109,22 +111,21 @@ function Api(props) {
       </TableBody>
       </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        // count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
+
     </Paper>
 
 );
             </div>
     )} else{
 
-      return (<div style={{width:410, height:300, paddingLeft:30, paddingRight:130}}> <h1>Thanks for Visiting, Follow us on Twitter, Facebook, Instagram</h1> </div>)
+      return (
+      
+
+        <SocialFollow/>
+      // <div style={{width:410, height:300, paddingLeft:30, paddingRight:130}}> <h1>Thanks for Visiting, Follow us on Twitter, Facebook, Instagram</h1> </div>
+      
+      
+      )
     }
                    
   } 
